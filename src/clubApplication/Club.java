@@ -7,6 +7,7 @@ public class Club {
 	
 	// methods
 	private Member[] extendMembersArray(Member[] arr) {
+		// increase members array length to accommodate new member
 		Member[] extendedMembersArray = new Member[arr.length + 1];
 		for (int i = 0; i < arr.length; i++) {
 			extendedMembersArray[i] = arr[i];
@@ -19,8 +20,11 @@ public class Club {
 		// exist and we can get the attributes required for Member from Person.
 		Member newMember = new Member(currentNumber, person.getSurName(), 
 				person.getFirstName(), person.getSecondName());
+		// increase members array length to accommodate new member
 		members = extendMembersArray(members);
+		// add new member as last member;
 		members[currentNumber] = newMember;
+		// increment last member number for next new member;
 		currentNumber += 1;
 		return newMember;
 	}
@@ -42,7 +46,7 @@ public class Club {
 	}
 	
 	public void showMembers() {
-		// C# foreach equivalent
+		// C# for each equivalent
 		for (Member member: members) {
 			if (member != null) {
 				member.show();				
