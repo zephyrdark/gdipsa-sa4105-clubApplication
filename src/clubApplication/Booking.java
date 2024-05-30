@@ -12,11 +12,13 @@ public class Booking {
 	private Facility facility;
 	private LocalDateTime start;
 	private LocalDateTime end;
+	// Instantiate DateTimeFormatter object that will create LocalDateTime objects
+	static DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 	
 	
 	// Constructor
-	public Booking(Member member, Facility facility, String start
-			, String end) throws BadBookingException {
+	public Booking(Member member, Facility facility, LocalDateTime start
+			, LocalDateTime end) throws BadBookingException {
 		if (member == null) {
 			throw new BadBookingException("Member cannot be null!");
 		}
@@ -25,11 +27,11 @@ public class Booking {
 			throw new BadBookingException("Facility cannot be null!");
 		}
 		
-		if (start == null || stringToLocalDateTime(start) == null) {
+		if (start == null) {
 			throw new BadBookingException("Start date cannot be null!");
 		}
 		
-		if (end == null || stringToLocalDateTime(end) == null) {
+		if (end == null) {
 			throw new BadBookingException("End date cannot be null!");
 		}
 		
@@ -37,7 +39,7 @@ public class Booking {
 //			throw new NullPointerException();
 //		}
 		
-		if (stringToLocalDateTime(start).isAfter(stringToLocalDateTime(end))) {
+		if (start.isAfter(end)) {
 			throw new BadBookingException("Start date cannot be after End date!");
 		}		
 		
@@ -70,31 +72,19 @@ public class Booking {
 		return start;
 	}
 
-	public void setStart(String start) {
-		this.end = stringToLocalDateTime(start);
+	public void setStart(LocalDateTime start) {
+		this.start = start;
 	}
 
 	public LocalDateTime getEnd() {
 		return end;
 	}
 
-	public void setEnd(String end) {
-		this.end = stringToLocalDateTime(end);
+	public void setEnd(LocalDateTime end) {
+		this.end = end;
 	}
 	
 	// Methods
-	private LocalDateTime stringToLocalDateTime(String str) {
-		try {
-			LocalDateTime date = null;
-			DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-			date = LocalDateTime.parse(str, df);
-			return date;
-		} catch (DateTimeParseException e) {
-			System.out.println(e.getMessage());
-		}
-		return null;
-	}
-	
 	
 	// Checks if given Booking object overlaps with this Booking object's
 	// start and end times.
@@ -122,8 +112,11 @@ public class Booking {
 	// 
 	@Override
 	public String toString() {
-		return member.toString() + facility.toString() + 
-				"Booking start: " + start + " Booking end: " + end;
+		return "\nBooking Details:"
+				+ "\n\tMember:" + member.toString() 
+				+ "\n\tFacility" + facility.toString() 
+				+ "\n\tBooking start: " + start.format(df) 
+				+ "\n\tBooking end: " + end.format(df);
 	}
 	
 	public void show() {
