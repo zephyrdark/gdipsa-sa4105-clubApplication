@@ -1,6 +1,8 @@
 package clubApplication;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 // Booking class is used to represent facility bookings made by Members
 public class Booking {
@@ -13,8 +15,8 @@ public class Booking {
 	
 	
 	// Constructor
-	public Booking(Member member, Facility facility, LocalDateTime start
-			, LocalDateTime end) throws BadBookingException {
+	public Booking(Member member, Facility facility, String start
+			, String end) throws BadBookingException {
 		if (member == null) {
 			throw new BadBookingException("Member cannot be null!");
 		}
@@ -23,21 +25,27 @@ public class Booking {
 			throw new BadBookingException("Facility cannot be null!");
 		}
 		
-		if (start == null) {
+		if (start == null || stringToLocalDateTime(start) == null) {
 			throw new BadBookingException("Start date cannot be null!");
 		}
 		
-		if (end == null) {
+		if (end == null || stringToLocalDateTime(end) == null) {
 			throw new BadBookingException("End date cannot be null!");
 		}
 		
-		if (start.isAfter(end)) {
+//		if (stringToLocalDateTime(start) == null || (stringToLocalDateTime(end)) == null) {
+//			throw new NullPointerException();
+//		}
+		
+		if (stringToLocalDateTime(start).isAfter(stringToLocalDateTime(end))) {
 			throw new BadBookingException("Start date cannot be after End date!");
 		}		
 		
 		// Use setters to set the Member and Facility objects
 		setMember(member);
 		setFacility(facility);
+		setStart(start);
+		setEnd(end);
 	}
 
 	
@@ -62,17 +70,31 @@ public class Booking {
 		return start;
 	}
 
-	public void setStart(LocalDateTime start) {
-		this.start = start;
+	public void setStart(String start) {
+		this.end = stringToLocalDateTime(start);
 	}
 
 	public LocalDateTime getEnd() {
 		return end;
 	}
 
-	public void setEnd(LocalDateTime end) {
-		this.end = end;
+	public void setEnd(String end) {
+		this.end = stringToLocalDateTime(end);
 	}
+	
+	// Methods
+	private LocalDateTime stringToLocalDateTime(String str) {
+		try {
+			LocalDateTime date = null;
+			DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+			date = LocalDateTime.parse(str, df);
+			return date;
+		} catch (DateTimeParseException e) {
+			System.out.println(e.getMessage());
+		}
+		return null;
+	}
+	
 	
 	// Checks if given Booking object overlaps with this Booking object's
 	// start and end times.
