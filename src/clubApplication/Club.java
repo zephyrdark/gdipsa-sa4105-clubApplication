@@ -20,6 +20,8 @@ public class Club {
 	// Methods	
 	
 	// --MEMBER RELATED--
+	
+	// Adds a person into this Club instance's members.
 	public Member addMember(Person person) {
 		// initialize new Member using Person, since Person object must already
 		// exist and we can get the attributes required for Member from Person.
@@ -64,7 +66,9 @@ public class Club {
 		return null;
 	}
 	
+	
 	// --FACILITY RELATED--
+	
 	// Gets the Facility object given a facility name.
 	public Facility getFacility(String name) {
 		return facilities.get(name);
@@ -95,5 +99,11 @@ public class Club {
 		for (String facility: facilitiesKeys) {
 			facilities.get(facility).show();
 		}
+	}
+	
+	// General
+	public void show() {
+		this.showFacilities();
+		this.showMembers();
 	}
 }

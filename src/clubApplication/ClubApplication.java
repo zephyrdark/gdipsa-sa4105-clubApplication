@@ -20,15 +20,15 @@ public class ClubApplication {
 		System.out.println(club1.findMember(0));
 		System.out.println(club1.findMember(2));
 			
-		// Test Facility and respective Club methods.
-		Facility facility1 = new Facility("Gym");
-		Facility facility2 = new Facility("Spa","Treat yourself to a rejuvenating spa");
-				
-		club1.addFacility(facility1);
-		club1.addFacility(facility2);
+		// Test Facility and respective Club methods.				
+		club1.addFacility(new Facility("Gym"));
+		club1.addFacility(new Facility("Spa","Treat yourself to a rejuvenating spa"));
 		
 		System.out.println("\nShow club Facilities:");
 		club1.showFacilities();
+		
+		System.out.println("\nShow club Facilities and Members:");
+		club1.show();
 	}
 
 }
