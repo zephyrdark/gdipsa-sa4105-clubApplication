@@ -86,7 +86,7 @@ public class Booking {
 	private LocalDateTime stringToLocalDateTime(String str) {
 		try {
 			LocalDateTime date = null;
-			DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+			DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 			date = LocalDateTime.parse(str, df);
 			return date;
 		} catch (DateTimeParseException e) {

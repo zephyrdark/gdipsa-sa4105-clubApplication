@@ -52,7 +52,7 @@ public class ClubApplication {
 		System.out.println("\nTest no start date:");
 		try {
 			Booking booking3 = new Booking(club1.findMember(0), club1.getFacility("Gym"), 
-					"2024", "2024-06-14");
+					"2024", "2024-06-14 12:00");
 		} catch(BadBookingException e) {
 			System.out.println(e.getMessage());
 		} catch(NullPointerException e) {
@@ -60,16 +60,15 @@ public class ClubApplication {
 		}
 		
 		// Test exception for null no end date
-		// TO-DO: this is outputting wrong exception message. To fix.
-//		System.out.println("\nTest no end date:");
-//		try {
-//			Booking booking4 = new Booking(club1.findMember(2), club1.getFacility("Spa"), 
-//					"2024-05-30", "2024");
-//		} catch(BadBookingException e) {
-//			System.out.println(e.getMessage());
-//		} catch(NullPointerException e) {
-//			System.out.println(e);
-//		}
+		System.out.println("\nTest no end date:");
+		try {
+			Booking booking4 = new Booking(club1.findMember(2), club1.getFacility("Spa"), 
+					"2024-05-30 12:00", "2024");
+		} catch(BadBookingException e) {
+			System.out.println(e.getMessage());
+		} catch(NullPointerException e) {
+			System.out.println(e);
+		}
 	}
 
 }
