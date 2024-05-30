@@ -1,11 +1,11 @@
 package clubApplication;
 
 public class Facility {
-	// attributes
+	// Attributes
 	private String name;
 	private String description;
 	
-	// getters & setters
+	// Getters & setters
 	public String getName() {
 		return name;
 	}
@@ -14,7 +14,7 @@ public class Facility {
 		return description;
 	}
 	
-	// constructors
+	// Constructors
 	public Facility(String name) {
 		this.name = name;
 		this.description = null;
@@ -25,7 +25,8 @@ public class Facility {
 		this.description = description;
 	}
 	
-	// methods
+	// Methods
+	@Override
 	public String toString() {
 		String output = "";
 		if (getDescription() == null) {

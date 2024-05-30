@@ -22,6 +22,7 @@ public class Member extends Person {
 	}
 
 	// methods
+	@Override
 	public String toString() {
 		return super.toString() + " Membership Number: " + getMemberNumber();
 	}
