@@ -30,6 +30,8 @@ public class ClubApplication {
 		System.out.println("\nShow club Facilities and Members:");
 		club1.show();
 
+		// TEST CASES
+		
 		// Test exception for null Member
 		System.out.println("\nTest null member:");
 		try {
@@ -64,6 +66,17 @@ public class ClubApplication {
 		try {
 			Booking booking4 = new Booking(club1.findMember(2), club1.getFacility("Spa"), 
 					"2024-05-30 12:00", "2024");
+		} catch(BadBookingException e) {
+			System.out.println(e.getMessage());
+		} catch(NullPointerException e) {
+			System.out.println(e);
+		}
+		
+		// Test exception for null no end date
+		System.out.println("\nTest start date after end date:");
+		try {
+			Booking booking4 = new Booking(club1.findMember(2), club1.getFacility("Spa"), 
+					"2024-05-30 12:00", "2024-05-20 12:00");
 		} catch(BadBookingException e) {
 			System.out.println(e.getMessage());
 		} catch(NullPointerException e) {
