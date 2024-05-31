@@ -60,6 +60,8 @@ public class ClubApplication {
 		BookingRegister br = new BookingRegister();
 		br.addBooking(booking1.getMember(),booking1.getFacility(),
 				booking1.getStart(),booking1.getEnd());;
+				
+		System.out.println(br.getBookings(booking1.getFacility(), booking1.getStart(),booking1.getEnd()));
 		
 		
 		// TEST CASES

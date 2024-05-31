@@ -22,11 +22,17 @@ public class Booking {
 		
 		// Throw BadBookingException if any of the parameters are null
 		String error = null;
-		error = (member == null) ? "Member cannot be null!" : null;
-		error = (facility == null) ? "Facility cannot be null" : null;
-		error = (start == null) ? "Start date cannot be null!" : null;
-		error = (end == null) ? "End date cannot be null!" : null;
-		error = (start.isAfter(end)) ? "Start date cannot be after End date!" : null;
+		if (member == null) {
+			error = "Member cannot be null!";
+		} else if (facility == null) {
+			error = "Facility cannot be null";
+		} else if (start == null) {
+			error = "Start date cannot be null!";
+		} else if (end == null) {
+			error = "End date cannot be null!";
+		} else if (start.isAfter(end)) {
+			error = "Start date cannot be after End date!";
+		}
 		if (error != null) {
 			throw new BadBookingException(error);			
 		}
