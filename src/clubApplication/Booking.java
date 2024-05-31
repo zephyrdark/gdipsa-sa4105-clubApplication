@@ -28,11 +28,6 @@ public class Booking {
 		if (error != "") {
 			throw new BadBookingException(error);			
 		}
-		// TO-DO: check if this is required/correct
-//		if (stringToLocalDateTime(start) == null || (stringToLocalDateTime(end)) == null) {
-//			throw new NullPointerException();
-//		}
-
 		
 		// Use setters to set the Member and Facility objects
 		setMember(member);
