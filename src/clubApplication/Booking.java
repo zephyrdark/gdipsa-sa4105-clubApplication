@@ -19,29 +19,20 @@ public class Booking {
 	// Constructor
 	public Booking(Member member, Facility facility, LocalDateTime start
 			, LocalDateTime end) throws BadBookingException {
-		if (member == null) {
-			throw new BadBookingException("Member cannot be null!");
+		String error = "";
+		error = (member == null) ? "Member cannot be null!" : "";
+		error = (facility == null) ? "Facility cannot be null" : "";
+		error = (start == null) ? "Start date cannot be null!" : "";
+		error = (end == null) ? "End date cannot be null!" : "";
+		error = (start.isAfter(end)) ? "Start date cannot be after End date!" : "";
+		if (error != "") {
+			throw new BadBookingException(error);			
 		}
-		
-		if (facility == null) {
-			throw new BadBookingException("Facility cannot be null!");
-		}
-		
-		if (start == null) {
-			throw new BadBookingException("Start date cannot be null!");
-		}
-		
-		if (end == null) {
-			throw new BadBookingException("End date cannot be null!");
-		}
-		
+		// TO-DO: check if this is required/correct
 //		if (stringToLocalDateTime(start) == null || (stringToLocalDateTime(end)) == null) {
 //			throw new NullPointerException();
 //		}
-		
-		if (start.isAfter(end)) {
-			throw new BadBookingException("Start date cannot be after End date!");
-		}		
+
 		
 		// Use setters to set the Member and Facility objects
 		setMember(member);
