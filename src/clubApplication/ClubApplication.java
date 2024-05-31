@@ -24,7 +24,7 @@ public class ClubApplication {
 	}
 	
 	// Method - Main
-	public static void main(String[] args) {
+	public static void main(String[] args) throws BadBookingException {
 		System.out.println("--ClubApplication main--");
 		
 		// Test Member and respective Club methods.
@@ -53,13 +53,13 @@ public class ClubApplication {
 		club1.show();
 		
 		// Test Booking class
-		try {
-			Booking booking1 = new Booking(club1.findMember(0), club1.getFacility("Gym"), 
-					stringToLocalDateTime("2024-05-30 12:00"), stringToLocalDateTime("2024-06-14 12:00"));
-			booking1.show();
-		} catch(BadBookingException e) {
-			System.out.println(e.getMessage());
-		}
+		Booking booking1 = new Booking(club1.findMember(0), club1.getFacility("Gym"), 
+				stringToLocalDateTime("2024-05-30 12:00"), stringToLocalDateTime("2024-06-14 12:00"));
+		booking1.show();
+		
+		BookingRegister br = new BookingRegister();
+		br.addBooking(booking1.getMember(),booking1.getFacility(),
+				booking1.getStart(),booking1.getEnd());;
 		
 		
 		// TEST CASES

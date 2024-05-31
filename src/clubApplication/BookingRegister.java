@@ -11,12 +11,12 @@ public class BookingRegister {
 	// Attributes
 	
 	// HashMap to contain K: Facility, V: List of Bookings
-	private Map<Facility, List<Booking>> bookings;
+	private Map<Facility, List<Booking>> bookingLists;
 	
 	
 	// Constructor
 	public BookingRegister() {
-		bookings = new HashMap<Facility, List<Booking>>();
+		bookingLists = new HashMap<Facility, List<Booking>>();
 	}
 	
 	
@@ -29,22 +29,31 @@ public class BookingRegister {
 		
 		// Instantiate Booking object
 		Booking bookingRequest = new Booking(member, facility, start, end);
-		// get booking list of given facility
-		List<Booking> facilityBookingList = bookings.get(facility);
+				
 		// if given facility has no booking list, create new bookings list
-		if (facilityBookingList == null) {
+		if (bookingLists.get(facility) == null) { // bookingLists.get(facility) returns List<Booking>
 			List<Booking> newBookingList = new ArrayList<Booking>();
-			bookings.put(facility, newBookingList);
+			bookingLists.put(facility, newBookingList);
 		}
+		
 		// if given facility has booking list, check for overlap bookings
-		for (Booking booking: facilityBookingList) {
+		for (Booking booking: bookingLists.get(facility)) {
 			if (booking.overlaps(bookingRequest)) {
 				throw new BadBookingException("Error: Booking overlaps!");
 			}
 		}
+		
 		// if no overlap/BadBookingException, add bookingRequest to booking list
-		facilityBookingList.add(bookingRequest);
+		bookingLists.get(facility).add(bookingRequest);
 	}
 	
+	// Accepts references to Facility, LocalDateTime start/end to return a 
+	// ArrayList<Booking> which contains all Bookings for the given Facility
+	// within the start/end times
+	public ArrayList<Booking> getBookings(Facility facility, 
+			LocalDateTime start, LocalDateTime end) {
+		// TO-DO: to complete, question 21.
+		return null;
+	}
 	
 }

@@ -21,13 +21,13 @@ public class Booking {
 			, LocalDateTime end) throws BadBookingException {
 		
 		// Throw BadBookingException if any of the parameters are null
-		String error = "";
-		error = (member == null) ? "Member cannot be null!" : "";
-		error = (facility == null) ? "Facility cannot be null" : "";
-		error = (start == null) ? "Start date cannot be null!" : "";
-		error = (end == null) ? "End date cannot be null!" : "";
-		error = (start.isAfter(end)) ? "Start date cannot be after End date!" : "";
-		if (error != "") {
+		String error = null;
+		error = (member == null) ? "Member cannot be null!" : null;
+		error = (facility == null) ? "Facility cannot be null" : null;
+		error = (start == null) ? "Start date cannot be null!" : null;
+		error = (end == null) ? "End date cannot be null!" : null;
+		error = (start.isAfter(end)) ? "Start date cannot be after End date!" : null;
+		if (error != null) {
 			throw new BadBookingException(error);			
 		}
 		
