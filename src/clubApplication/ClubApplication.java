@@ -3,6 +3,7 @@ package clubApplication;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
 
 public class ClubApplication {
 	
@@ -52,16 +53,26 @@ public class ClubApplication {
 		System.out.println("\nShow club Facilities and Members:");
 		club1.show();
 		
-		// Test Booking class
+		// Test Booking class - Make booking
 		Booking booking1 = new Booking(club1.findMember(0), club1.getFacility("Gym"), 
 				stringToLocalDateTime("2024-05-30 12:00"), stringToLocalDateTime("2024-06-14 12:00"));
 		booking1.show();
 		
+		// Test Booking class - Add booking to BookingRegister
 		BookingRegister br = new BookingRegister();
 		br.addBooking(booking1.getMember(),booking1.getFacility(),
 				booking1.getStart(),booking1.getEnd());;
 				
-		System.out.println(br.getBookings(booking1.getFacility(), booking1.getStart(),booking1.getEnd()));
+		System.out.println("\nAdd Booking to BookingRegister");
+		ArrayList<Booking> a = br.getBookings(booking1.getFacility(), booking1.getStart(),booking1.getEnd());
+		a.stream().forEach(x -> System.out.println(x));
+		
+		// Test Booking class - Remove booking from BookingRegister
+		br.removeBooking(booking1);
+		System.out.println("\nRemoved Booking from BookingRegister");
+		
+		ArrayList<Booking> b = br.getBookings(booking1.getFacility(), booking1.getStart(),booking1.getEnd());
+		b.stream().forEach(x -> System.out.println(x));
 		
 		
 		// TEST CASES
@@ -113,7 +124,7 @@ public class ClubApplication {
 //					stringToLocalDateTime("2024-05-30 12:00"), stringToLocalDateTime("2024-05-20 12:00"));
 //		} catch(BadBookingException e) {
 //			System.out.println(e.getMessage());
-//		} catch(NullPointerException e) {
+//		} catch(NullPointerEx)ception e) {
 //			System.out.println(e);
 //		}
 	}
