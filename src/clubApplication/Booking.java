@@ -19,6 +19,8 @@ public class Booking {
 	// Constructor
 	public Booking(Member member, Facility facility, LocalDateTime start
 			, LocalDateTime end) throws BadBookingException {
+		
+		// Throw BadBookingException if any of the parameters are null
 		String error = "";
 		error = (member == null) ? "Member cannot be null!" : "";
 		error = (facility == null) ? "Facility cannot be null" : "";
@@ -81,13 +83,12 @@ public class Booking {
 			return false;
 		}
 
-		// No overlap if:
+		// This Booking does not overlap if:
 		// 1. this Booking's start is after target Booking's end, or
 		// 2. this Booking's end is before target Booking's start
-		if (start.isAfter(booking.getEnd()) ||
-				start.isEqual(booking.getStart()) ||
-				end.isBefore(booking.getStart()) ||
-				end.isEqual(booking.getEnd())) {
+		if (start.isAfter(booking.getEnd())
+			|| end.isBefore(booking.getStart())
+			) {
 			return false;
 		}
 		
