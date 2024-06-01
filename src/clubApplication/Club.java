@@ -4,8 +4,6 @@ import java.util.List;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Map;
-import java.util.Set;
-import java.util.stream.Collectors;
 import java.util.HashMap;
 
 public class Club {	
@@ -79,6 +77,13 @@ public class Club {
 	
 	// --FACILITY RELATED--
 	
+	/*
+	 * 6)	Provide methods for handling facilities, equivalent to those 
+	 * provided for members. Implement the following methods in class Club 
+	 * using HashMap: getFacility(String name),  getFacilities(),  
+	 * addFacility(), removeFacility() and showFacilities() 
+	 */
+	
 	// Gets the Facility object given a facility name.
 	public Facility getFacility(String name) {
 		return facilities.get(name);
@@ -103,12 +108,17 @@ public class Club {
 	// Shows all facilities name and description from this Club instance's 
 	// facilities.
 	public void showFacilities() {
-		// Use Set and .keySet() to make the facilities K,V pairs readable.
-		Set<String> facilitiesKeys = facilities.keySet();
-		// Loop through each set and call its .show() method
-		for (String facility: facilitiesKeys) {
-			facilities.get(facility).show();
-		}
+		// Implementation #1 - using for loop
+		// Use .keySet() to get the String Keys (facility names) of facilities Map,
+		// and loop through each String, obtain the respective facility and 
+		// call its.show() method
+//		for (String facility: facilities.keySet()) {
+//			facilities.get(facility).show();
+//		}
+		// Implementation #2 - using stream
+//		facilities.keySet().stream().forEach(x -> facilities.get(x).show());
+		// Implementation #3 - using stream advised by ChatGPT3.5 ...
+		facilities.values().forEach(Facility::show);
 	}
 	
 	
