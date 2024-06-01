@@ -12,7 +12,7 @@ public class Club {
 	// Attributes
 	
 	// --MEMBER RELATED--
-	private List<Member> members = new ArrayList<Member>();
+	private ArrayList<Member> members = new ArrayList<Member>();
 	private int currentNumber = 0;
 	
 	// --FACILITY RELATED--
@@ -123,15 +123,20 @@ public class Club {
 	 */
 	public void addBooking(int memberNumber, String facilityName, 
 			LocalDateTime start, LocalDateTime end) throws BadBookingException {
-		// Implementation #1 - for loop to get Member Object
-		Member bookingMember = null;
-		for (Member member: members) {
-			if (member.getMemberNumber() == memberNumber) {
-				bookingMember = member;
-				break;
-			}
-		}
-		// TO-DO: Implementation #2 - try using Stream to get Member Object
+		// Implementation #1 - use for loop to get Member Object
+//		Member bookingMember = null;
+//		for (Member member: members) {
+//			if (member.getMemberNumber() == memberNumber) {
+//				bookingMember = member;
+//				break;
+//			}
+//		}
+		// Implementation #2 - use stream and filter Each to get Member Object
+		Member bookingMember = members.stream()
+			    .filter(x -> x.getMemberNumber() == memberNumber)
+			    .findFirst()
+			    .orElse(null);
+		
 		Facility bookingFacilty = facilities.get(facilityName);
 		clubBookingRegister.addBooking(bookingMember, bookingFacilty, start, end);
 	}
