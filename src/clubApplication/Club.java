@@ -115,9 +115,7 @@ public class Club {
 //		for (String facility: facilities.keySet()) {
 //			facilities.get(facility).show();
 //		}
-		// Implementation #2 - using stream
-//		facilities.keySet().stream().forEach(x -> facilities.get(x).show());
-		// Implementation #3 - using stream advised by ChatGPT3.5 ...
+		// Implementation #2 - using collections values() + forEach + method reference
 		facilities.values().forEach(Facility::show);
 	}
 	
