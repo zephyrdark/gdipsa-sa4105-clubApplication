@@ -12,13 +12,13 @@ public class BookingRegister {
 	// Attributes
 	
 	// HashMap to contain K: Facility, V: List of Bookings
-	private HashMap<Facility, ArrayList<Booking>> bookingRegister = new HashMap<Facility, ArrayList<Booking>>();
+	private HashMap<Facility, ArrayList<Booking>> bookingRegister;
 	
 	
-//	// Constructor
-//	public BookingRegister() {
-//		bookingRegister = new HashMap<Facility, ArrayList<Booking>>();
-//	}
+	// Constructor
+	public BookingRegister() {
+		bookingRegister = new HashMap<Facility, ArrayList<Booking>>();
+	}
 	
 	
 	// Getter
@@ -74,7 +74,6 @@ public class BookingRegister {
 //		return bookingsWithinDates;
 //	}
 	
-	
 	// Implementation #2 - using Stream - it works.
 	public ArrayList<Booking> getBookings(Facility facility, LocalDateTime start, LocalDateTime end) {
 		List<Booking> filteredFacilityBookings = bookingRegister.get(facility).stream()
@@ -85,6 +84,7 @@ public class BookingRegister {
 	
 	// Remove Booking from bookingLists given a reference to a Booking object.
 	public void removeBooking(Booking booking) {
-		// TO-DO: complete this.
+		List<Booking> filteredFacilityBookings = bookingRegister.get(booking.getFacility());
+		filteredFacilityBookings.removeIf(x -> x.equals(booking));
 	}
 }

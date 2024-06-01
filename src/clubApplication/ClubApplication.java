@@ -66,19 +66,20 @@ public class ClubApplication {
 		
 		
 		// Test BookingRegister - Get bookings from BookingRegister
-		System.out.println("\nCurrent bookings in BookingRegister for Gym");
+		System.out.println("\nCurrent bookings in BookingRegister for " + club1.getFacility("Gym"));
 		ArrayList<Booking> a = br.getBookings(club1.getFacility("Gym"), 
 				stringToLocalDateTime("2024-05-29 12:00"),stringToLocalDateTime("2024-06-15 12:00"));
 		a.stream().forEach(x -> System.out.println(x));
 		
 		// Test Booking class - Remove booking from BookingRegister
-//		br.removeBooking(booking1);
-//		System.out.println("\nRemoved Booking from BookingRegister");
-//		
-//		ArrayList<Booking> b = br.getBookings(club1.getFacility("Gym"), 
-//				stringToLocalDateTime("2024-05-29 12:00"),stringToLocalDateTime("2024-06-01 12:00"));
-//		b.stream().forEach(x -> System.out.println(x));
-//		
+		Booking bookingToRemove = br.getBookingRegister().get(club1.getFacility("Gym")).get(0);
+		br.removeBooking(bookingToRemove);
+		System.out.println("\nRemoved Booking from BookingRegister");
+		
+		ArrayList<Booking> b = br.getBookings(club1.getFacility("Gym"), 
+				stringToLocalDateTime("2024-05-29 12:00"),stringToLocalDateTime("2024-06-01 12:00"));
+		b.stream().forEach(x -> System.out.println(x));
+		
 		
 		// TEST CASES
 		

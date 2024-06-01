@@ -4,16 +4,7 @@ public class Facility {
 	// Attributes
 	private String name;
 	private String description;
-	
-	// Getters & setters
-	public String getName() {
-		return name;
-	}
-	
-	public String getDescription() {
-		return description;
-	}
-	
+		
 	// Constructors
 	public Facility(String name) {
 		this.name = name;
@@ -23,6 +14,15 @@ public class Facility {
 	public Facility(String name, String description) {
 		this.name = name;
 		this.description = description;
+	}
+	
+	// Getters & setters
+	public String getName() {
+		return name;
+	}
+	
+	public String getDescription() {
+		return description;
 	}
 	
 	// Methods
