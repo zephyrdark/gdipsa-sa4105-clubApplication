@@ -44,9 +44,11 @@ public class ClubApplication {
 		System.out.println(club1.findMember(2));
 			
 		// Test Facility and respective Club methods.				
-		club1.addFacility(new Facility("Gym"));
-		club1.addFacility(new Facility("Spa","Treat yourself to a rejuvenating spa"));
-		club1.addFacility(new Facility("Massage"));
+		club1.addFacility(new Facility("Gym","Bodies in motion, Strength and sweat intertwining, Paths to wellness forged."));
+		club1.addFacility(new Facility("Spa","Tranquil oasis, Renewal in every breath, Blissful waters flow."));
+		club1.addFacility(new Facility("Massage","Gentle hands bestow, Serenity and relief, Tension fades away."));
+		club1.addFacility(new Facility("Events Space","Vibrant gatherings, Echoes of laughter and joy, Memories take flight."));
+		club1.addFacility(new Facility("Karaoke"));
 		
 		System.out.println("\nShow club Facilities:");
 		club1.showFacilities();
@@ -97,6 +99,10 @@ public class ClubApplication {
 		// Test Club class - Show Club Facilities Sorted By Name (question 27)
 		System.out.println("\nShow Club Facilities Sorted By Name");
 		club1.showFacilitiesSortedByName();
+		
+		// Test Club class - Show Club Facilities Sorted By Description (question 28)
+		System.out.println("\nShow Club Facilities Sorted By Description");
+		club1.showFacilitiesSortedByDescription();
 		
 		// TEST CASES
 		

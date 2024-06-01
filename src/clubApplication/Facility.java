@@ -32,7 +32,7 @@ public class Facility {
 		if (getDescription() == null) {
 			output += "Facility Name: " + getName();			
 		} else {
-			output += "Facility Name: " + getName() + ", Description: " + getDescription();
+			output += "Facility Name: " + getName() + "\tDescription: " + getDescription();
 		}
 		return output;
 	}

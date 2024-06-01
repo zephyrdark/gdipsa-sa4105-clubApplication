@@ -3,6 +3,7 @@ package clubApplication;
 import java.util.List;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Map;
 import java.util.HashMap;
 
@@ -180,7 +181,9 @@ public class Club {
 	 * facilities, sorted by name.
 	 */
 	public void showFacilitiesSortedByName() {
-		facilities.keySet().stream().sorted().forEach(System.out::println);
+		facilities.values().stream()
+		.sorted(Comparator.comparing(Facility::getName))
+		.forEach(System.out::println);
 	}
 	
 	/*
@@ -188,7 +191,10 @@ public class Club {
 	 *  displays all the facilities but sorted by description.
 	 */
 	public void showFacilitiesSortedByDescription() {
-		// TO-DO
+		facilities.values().stream()
+		.filter(x -> x.getDescription() != null)
+		.sorted(Comparator.comparing(Facility::getDescription))
+		.forEach(System.out::println);
 	}
 	
 	/*
