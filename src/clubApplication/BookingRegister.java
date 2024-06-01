@@ -12,13 +12,13 @@ public class BookingRegister {
 	// Attributes
 	
 	// HashMap to contain K: Facility, V: List of Bookings
-	private HashMap<Facility, ArrayList<Booking>> bookingRegister;
+	private HashMap<Facility, ArrayList<Booking>> bookingRegister = new HashMap<Facility, ArrayList<Booking>>();
 	
 	
-	// Constructor
-	public BookingRegister() {
-		bookingRegister = new HashMap<Facility, ArrayList<Booking>>();
-	}
+//	// Constructor
+//	public BookingRegister() {
+//		bookingRegister = new HashMap<Facility, ArrayList<Booking>>();
+//	}
 	
 	
 	// Getter
@@ -60,28 +60,28 @@ public class BookingRegister {
 	// within the start/end times
 	
 	// Implementation #1 - for loop - it works.
-	public ArrayList<Booking> getBookings(Facility facility, 
-			LocalDateTime start, LocalDateTime end) {
-		// Instantiate ArrayList<Booking> to hold the queried Bookings
-		ArrayList<Booking> bookingsWithinDates = new ArrayList<Booking>();
-		// Loop through each Booking to check for the start/end times.
-		for (Booking booking: bookingRegister.get(facility)) {
-			if ((booking.getStart().isAfter(start) || booking.getStart().equals(start)) && 
-					(booking.getEnd().isBefore(end) || booking.getEnd().equals(end))) {
-				bookingsWithinDates.add(booking);
-			}
-		}
-		return bookingsWithinDates;
-	}
-	
-	
-	// Implementation #2 - TO-DO: to fix, not working.
-//	public ArrayList<Booking> getBookings(Facility facility, LocalDateTime start, LocalDateTime end) {
-//		List<Booking> filteredFacilityBookings = bookingRegister.get(facility).stream()
-//				.filter(booking -> booking.getStart().isAfter(start) && booking.getEnd().isBefore(end))
-//	            .collect(Collectors.toList());
-//		return (ArrayList<Booking>)filteredFacilityBookings;
+//	public ArrayList<Booking> getBookings(Facility facility, 
+//			LocalDateTime start, LocalDateTime end) {
+//		// Instantiate ArrayList<Booking> to hold the queried Bookings
+//		ArrayList<Booking> bookingsWithinDates = new ArrayList<Booking>();
+//		// Loop through each Booking to check for the start/end times.
+//		for (Booking booking: bookingRegister.get(facility)) {
+//			if ((booking.getStart().isAfter(start) || booking.getStart().equals(start)) && 
+//					(booking.getEnd().isBefore(end) || booking.getEnd().equals(end))) {
+//				bookingsWithinDates.add(booking);
+//			}				
+//		}
+//		return bookingsWithinDates;
 //	}
+	
+	
+	// Implementation #2 - using Stream - it works.
+	public ArrayList<Booking> getBookings(Facility facility, LocalDateTime start, LocalDateTime end) {
+		List<Booking> filteredFacilityBookings = bookingRegister.get(facility).stream()
+				.filter(booking -> booking.getStart().isAfter(start) && booking.getEnd().isBefore(end))
+	            .collect(Collectors.toList());
+		return (ArrayList<Booking>)filteredFacilityBookings;
+	}
 	
 	// Remove Booking from bookingLists given a reference to a Booking object.
 	public void removeBooking(Booking booking) {

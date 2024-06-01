@@ -53,27 +53,32 @@ public class ClubApplication {
 		System.out.println("\nShow club Facilities and Members:");
 		club1.show();
 		
-		// Test Booking class - Make booking
-		Booking booking1 = new Booking(club1.findMember(0), club1.getFacility("Gym"), 
-				stringToLocalDateTime("2024-05-30 12:00"), stringToLocalDateTime("2024-06-14 12:00"));
-		booking1.show();
 		
-		// Test Booking class - Add booking to BookingRegister
+		// Test BookingRegister
+		
+		// Test BookingRegister - Instantiate and initialize BookingRegister
 		BookingRegister br = new BookingRegister();
-		br.addBooking(booking1.getMember(),booking1.getFacility(),
-				booking1.getStart(),booking1.getEnd());;
-				
+
+		// Test BookingRegister - Add booking to BookingRegister
 		System.out.println("\nAdd Booking to BookingRegister");
-		ArrayList<Booking> a = br.getBookings(booking1.getFacility(), booking1.getStart(),booking1.getEnd());
+		br.addBooking(club1.findMember(0),club1.getFacility("Gym"),
+				stringToLocalDateTime("2024-05-30 12:00"),stringToLocalDateTime("2024-06-14 12:00"));;
+		
+		
+		// Test BookingRegister - Get bookings from BookingRegister
+		System.out.println("\nCurrent bookings in BookingRegister for Gym");
+		ArrayList<Booking> a = br.getBookings(club1.getFacility("Gym"), 
+				stringToLocalDateTime("2024-05-29 12:00"),stringToLocalDateTime("2024-06-15 12:00"));
 		a.stream().forEach(x -> System.out.println(x));
 		
 		// Test Booking class - Remove booking from BookingRegister
-		br.removeBooking(booking1);
-		System.out.println("\nRemoved Booking from BookingRegister");
-		
-		ArrayList<Booking> b = br.getBookings(booking1.getFacility(), booking1.getStart(),booking1.getEnd());
-		b.stream().forEach(x -> System.out.println(x));
-		
+//		br.removeBooking(booking1);
+//		System.out.println("\nRemoved Booking from BookingRegister");
+//		
+//		ArrayList<Booking> b = br.getBookings(club1.getFacility("Gym"), 
+//				stringToLocalDateTime("2024-05-29 12:00"),stringToLocalDateTime("2024-06-01 12:00"));
+//		b.stream().forEach(x -> System.out.println(x));
+//		
 		
 		// TEST CASES
 		
