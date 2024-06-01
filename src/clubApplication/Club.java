@@ -46,32 +46,40 @@ public class Club {
 		for (Member member: members) {
 			if (member.getMemberNumber() == memberNumber) {
 				members.remove(member);
-				return;
+				break;
 			}
 		}
 	}
 	
 	// Shows all members of this Club instance's members.
 	public void showMembers() {
-		// the below for loop is the equivalent of C#'s for-each
-		for (Member member: members) {
-			member.show();
-		}
+		// Implementation #1 - using for loop
+//		for (Member member: members) {
+//			member.show();
+//		}
+		// Implementation #2 - using stream and method reference
+		members.forEach(Member::show);
 	}
 	
 	// Gets the list of members of this Club's instance.
-	public List<Member> getMembers() {
+	public ArrayList<Member> getMembers() {
 		return members;
 	}
 	
 	// Finds a Member in this Club's instance, given a memberNumber integer.
 	public Member findMember(int memberNumber) {
-		for (Member member: members) {
-			if (member.getMemberNumber() == memberNumber) {
-				return member;
-			}
-		}
-		return null;
+		// Implementation #1 - using for loop
+//		for (Member member: members) {
+//			if (member.getMemberNumber() == memberNumber) {
+//				return member;
+//			}
+//		}
+//		return null;
+		// Implementation #2 - using stream
+		return members.stream()
+			    .filter(x -> x.getMemberNumber() == memberNumber)
+			    .findFirst()
+			    .orElse(null);
 	}
 	
 	
@@ -143,10 +151,8 @@ public class Club {
 		Member bookingMember = members.stream()
 			    .filter(x -> x.getMemberNumber() == memberNumber)
 			    .findFirst()
-			    .orElse(null);
-		
-		Facility bookingFacilty = facilities.get(facilityName);
-		clubBookingRegister.addBooking(bookingMember, bookingFacilty, start, end);
+			    .orElse(null);		
+		clubBookingRegister.addBooking(bookingMember, facilities.get(facilityName), start, end);
 	}
 	
 	/*
@@ -160,17 +166,18 @@ public class Club {
 	 * print each retrieved booking to the screen.
 	 */
 	public ArrayList<Booking> getBookings(String facilityName, LocalDateTime start, LocalDateTime end) {
-		return clubBookingRegister.getBookings(this.facilities.get(facilityName),start,end);
+		return clubBookingRegister.getBookings(facilities.get(facilityName),start,end);
 	}
 	
 	// Implementation using Stream
 	public void showBookings(String facilityName, LocalDateTime start, LocalDateTime end) {
-		this.getBookings(facilityName,start,end).forEach(x -> x.show());
+		// Call the show() of each Booking from the ArrayList<Booking> returned from getBookings
+		getBookings(facilityName,start,end).forEach(Booking::show);
 	}
 	
 	// General
 	public void show() {
-		this.showFacilities();
-		this.showMembers();
+		showFacilities();
+		showMembers();
 	}
 }
