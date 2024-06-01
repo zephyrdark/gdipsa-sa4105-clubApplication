@@ -46,6 +46,7 @@ public class ClubApplication {
 		// Test Facility and respective Club methods.				
 		club1.addFacility(new Facility("Gym"));
 		club1.addFacility(new Facility("Spa","Treat yourself to a rejuvenating spa"));
+		club1.addFacility(new Facility("Massage"));
 		
 		System.out.println("\nShow club Facilities:");
 		club1.showFacilities();
@@ -92,6 +93,10 @@ public class ClubApplication {
 		System.out.println("\nCurrent bookings in Club for " + club1.getFacility("Gym"));
 		club1.showBookings("Gym", stringToLocalDateTime("2024-06-07 12:00"), 
 				stringToLocalDateTime("2024-06-14 12:00"));
+		
+		// Test Club class - Show Club Facilities Sorted By Name (question 27)
+		System.out.println("\nShow Club Facilities Sorted By Name");
+		club1.showFacilitiesSortedByName();
 		
 		// TEST CASES
 		

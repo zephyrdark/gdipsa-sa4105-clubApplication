@@ -175,6 +175,31 @@ public class Club {
 		getBookings(facilityName,start,end).forEach(Booking::show);
 	}
 	
+	/*
+	 * 27)	Add method showFacilitiesSortedByName() to the Club class. It displays all the
+	 * facilities, sorted by name.
+	 */
+	public void showFacilitiesSortedByName() {
+		facilities.keySet().stream().sorted().forEach(System.out::println);
+	}
+	
+	/*
+	 * 28)	Add method showFacilitiesSortedByDescription() to the Club class. It also
+	 *  displays all the facilities but sorted by description.
+	 */
+	public void showFacilitiesSortedByDescription() {
+		// TO-DO
+	}
+	
+	/*
+	 * 29)	Add method showMembersSorted() to the Club class. It displays all the 
+	 * members, sorted by full name (surname, then first name, then second name).
+	 */
+	public void showMembersSorted() {
+		// TO-DO
+	}
+	
+	
 	// General
 	public void show() {
 		showFacilities();
