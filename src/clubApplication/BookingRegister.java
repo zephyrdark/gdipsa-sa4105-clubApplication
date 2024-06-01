@@ -1,6 +1,7 @@
 package clubApplication;
 
 import java.util.HashMap;
+import java.util.Map;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -77,7 +78,8 @@ public class BookingRegister {
 	// Implementation #2 - using Stream - it works.
 	public ArrayList<Booking> getBookings(Facility facility, LocalDateTime start, LocalDateTime end) {
 		List<Booking> filteredFacilityBookings = bookingRegister.get(facility).stream()
-				.filter(booking -> booking.getStart().isAfter(start) && booking.getEnd().isBefore(end))
+				.filter(booking -> (booking.getStart().isAfter(start) || booking.getStart().equals(start)) 
+						&& (booking.getEnd().isBefore(end) || booking.getEnd().equals(end)))
 	            .collect(Collectors.toList());
 		return (ArrayList<Booking>)filteredFacilityBookings;
 	}

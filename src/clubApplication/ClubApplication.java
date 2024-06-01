@@ -62,7 +62,7 @@ public class ClubApplication {
 		// Test BookingRegister - Add booking to BookingRegister
 		System.out.println("\nAdd Booking to BookingRegister");
 		br.addBooking(club1.findMember(0),club1.getFacility("Gym"),
-				stringToLocalDateTime("2024-05-30 12:00"),stringToLocalDateTime("2024-06-14 12:00"));;
+				stringToLocalDateTime("2024-05-30 12:00"),stringToLocalDateTime("2024-06-07 12:00"));;
 		
 		
 		// Test BookingRegister - Get bookings from BookingRegister
@@ -77,9 +77,17 @@ public class ClubApplication {
 		System.out.println("\nRemoved Booking from BookingRegister");
 		
 		ArrayList<Booking> b = br.getBookings(club1.getFacility("Gym"), 
-				stringToLocalDateTime("2024-05-29 12:00"),stringToLocalDateTime("2024-06-01 12:00"));
+				stringToLocalDateTime("2024-05-29 12:00"),stringToLocalDateTime("2024-06-15 12:00"));
 		b.stream().forEach(x -> System.out.println(x));
 		
+		// Test Club class - Add booking
+		System.out.println("\nAdd Booking from Club");
+		club1.addBooking(0, "Gym", stringToLocalDateTime("2024-06-07 12:00"), 
+				stringToLocalDateTime("2024-06-14 12:00"));
+		
+		System.out.println("\nCurrent bookings in Club for " + club1.getFacility("Gym"));
+		club1.showBookings("Gym", stringToLocalDateTime("2024-06-07 12:00"), 
+				stringToLocalDateTime("2024-06-14 12:00"));
 		
 		// TEST CASES
 		
@@ -130,7 +138,7 @@ public class ClubApplication {
 //					stringToLocalDateTime("2024-05-30 12:00"), stringToLocalDateTime("2024-05-20 12:00"));
 //		} catch(BadBookingException e) {
 //			System.out.println(e.getMessage());
-//		} catch(NullPointerEx)ception e) {
+//		} catch(NullPointerException e) {
 //			System.out.println(e);
 //		}
 	}
