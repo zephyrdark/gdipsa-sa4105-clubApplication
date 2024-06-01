@@ -83,6 +83,10 @@ public class ClubApplication {
 		// Test Club class - Add booking
 		System.out.println("\nAdd Booking from Club");
 		club1.addBooking(0, "Gym", stringToLocalDateTime("2024-06-07 12:00"), 
+				stringToLocalDateTime("2024-06-10 12:00"));
+		
+		System.out.println("\nAdd Booking from Club");
+		club1.addBooking(0, "Gym", stringToLocalDateTime("2024-06-11 12:00"), 
 				stringToLocalDateTime("2024-06-14 12:00"));
 		
 		System.out.println("\nCurrent bookings in Club for " + club1.getFacility("Gym"));
