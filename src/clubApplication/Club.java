@@ -153,7 +153,8 @@ public class Club {
 			    .filter(x -> x.getMemberNumber() == memberNumber)
 			    .findFirst()
 			    .orElse(null);		
-		clubBookingRegister.addBooking(bookingMember, facilities.get(facilityName), start, end);
+		Facility bookingFacility = facilities.get(facilityName);
+		clubBookingRegister.addBooking(bookingMember, bookingFacility, start, end);
 	}
 	
 	/*
