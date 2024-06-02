@@ -170,7 +170,7 @@ public class Club {
 		return clubBookingRegister.getBookings(facilities.get(facilityName),start,end);
 	}
 	
-	// Implementation using Stream
+	// Implementation using Collections method
 	public void showBookings(String facilityName, LocalDateTime start, LocalDateTime end) {
 		// Call the show() of each Booking from the ArrayList<Booking> returned from getBookings
 		getBookings(facilityName,start,end).forEach(Booking::show);

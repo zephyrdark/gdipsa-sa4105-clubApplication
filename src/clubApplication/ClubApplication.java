@@ -61,6 +61,8 @@ public class ClubApplication {
 		club1.show();
 		
 		
+		// -- TEST CASES --
+		
 		// Test BookingRegister
 		
 		// Test BookingRegister - Instantiate and initialize BookingRegister
@@ -112,8 +114,6 @@ public class ClubApplication {
 		// first name, then second name) (question 29)
 		System.out.println("\nShow Club Members, Sorted By Full Name");
 		club1.showMembersSorted();
-		
-		// TEST CASES
 		
 		// Test exception for null Member
 //		System.out.println("\nTest null member:");
