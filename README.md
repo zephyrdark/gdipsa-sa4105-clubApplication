@@ -11,10 +11,10 @@ Do note that the application is not an executable, nor does it take any user inp
 ## Topics
 
 This application includes various concepts such as:
-* Creating Simple Java Classes
-* Inheritance and Arrays
-* Java Library Classes and Collections
-* Functional Programming
+* [Creating Simple Java Classes](https://github.com/zephyrdark/gdipsa-sa4105-clubApplication?tab=readme-ov-file#creating-simple-java-classes)
+* [Inheritance and Arrays](https://github.com/zephyrdark/gdipsa-sa4105-clubApplication?tab=readme-ov-file#inheritance-and-arrays)
+* [Java Library Classes and Collections](https://github.com/zephyrdark/gdipsa-sa4105-clubApplication?tab=readme-ov-file#java-library-classes-and-collections)
+* [Functional Programming](https://github.com/zephyrdark/gdipsa-sa4105-clubApplication?tab=readme-ov-file#functional-programming)
 
 ### Creating Simple Java Classes
 
