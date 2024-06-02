@@ -31,6 +31,10 @@ public class ClubApplication {
 		// Test Member and respective Club methods.
 		Club club1 = new Club();
 		club1.addMember(new Person("Lee", "Alvin"));
+		club1.addMember(new Person("Lee", "Elvin"));
+		club1.addMember(new Person("Tan", "Ah", "Kow"));
+		club1.addMember(new Person("Tan", "Ah", "Meow"));
+		club1.addMember(new Person("Tan", "Mee", "Meow"));
 		club1.addMember(new Person("Tan", "Ah", "Beng"));
 		club1.addMember(new Person("Stan", "Laurel"));
 		club1.showMembers();
@@ -103,6 +107,11 @@ public class ClubApplication {
 		// Test Club class - Show Club Facilities Sorted By Description (question 28)
 		System.out.println("\nShow Club Facilities Sorted By Description");
 		club1.showFacilitiesSortedByDescription();
+		
+		// Test Club class - Show Club Members, sorted by full name (surname, then 
+		// first name, then second name) (question 29)
+		System.out.println("\nShow Club Members, Sorted By Full Name");
+		club1.showMembersSorted();
 		
 		// TEST CASES
 		

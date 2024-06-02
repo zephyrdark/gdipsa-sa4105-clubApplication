@@ -183,8 +183,30 @@ public class Club {
 	 */
 	public void showFacilitiesSortedByName() {
 		facilities.values().stream()
+        // Comparator<Facility> = Comparator.comparing(Facility::getName)
+        // that compares Facility objects based on their names.
+        // At the Comparator interface level, int compareTo(T o) method compares two objects of type T:
+        // - Returns either negative integer if the first object is less than the second,
+        // - zero if the first object is equal to the second, or a positive integer if the first object 
+        // is greater than the second.
+        // In this case, Comparator.comparing uses String's compareTo method to compare names.
+        // The compareTo method of the String class works as follows:
+        // - Compares two strings lexicographically, character by character,
+        //   based on the Unicode value of each character.
 		.sorted(Comparator.comparing(Facility::getName))
+        // .forEach(System.out::println) iterates over each Facility object in the stream
+        // and prints its string representation to the standard output.
 		.forEach(System.out::println);
+		
+		// Implementation as taught in class, 10 Collections, slide 48:
+//		facilities.values().stream()
+//		.sorted(new Comparator<Facility>(){
+//			@Override
+//			public int compare(Facility o1, Facility o2) {
+//				return o1.getName().compareTo(o2.getName());
+//			}
+//		})
+//		.forEach(System.out::println);
 	}
 	
 	/*
@@ -192,18 +214,24 @@ public class Club {
 	 *  displays all the facilities but sorted by description.
 	 */
 	public void showFacilitiesSortedByDescription() {
-		facilities.values().stream()
-		.filter(x -> x.getDescription() != null)
-		.sorted(Comparator.comparing(Facility::getDescription))
-		.forEach(System.out::println);
+	    // Convert the values of the facilities map to a stream for processing.
+	    facilities.values().stream()
+	        // .filter(x -> x.getDescription() != null) filters out Facility objects
+	        // that have a null description before passing to the next stage of the stream.
+	        .filter(x -> x.getDescription() != null)
+	        .sorted(Comparator.comparing(Facility::getDescription))
+	        .forEach(System.out::println);
 	}
+
 	
 	/*
 	 * 29)	Add method showMembersSorted() to the Club class. It displays all the 
 	 * members, sorted by full name (surname, then first name, then second name).
 	 */
 	public void showMembersSorted() {
-		// TO-DO
+		members.stream()
+		.sorted(Comparator.comparing(Member::toString))
+		.forEach(System.out::println);
 	}
 	
 	
