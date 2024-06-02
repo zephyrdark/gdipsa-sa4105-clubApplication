@@ -6,7 +6,7 @@ Hi, welcome to this repository!
 
 It contains files from my guided Java Foundations class for a simple Java Console application, and I would like to reflect on my learnings here. The design of the application was provided to me in class. I have no prior knowledge of Java. I have some experience in HTML, CSS, JavaScript, C# with ASP.NET Core, and Python from my prior classes, 4 months before this class.
 
-Do note that the application is not an executable, nor does it take any user inputs. Hence, if you want to test its functions, you will need to clone the repository into your Java Workspace and run the project in your Java IDE. I used Eclipse as my IDE.
+Do note that the application is not an executable, nor does it take any user inputs. Hence, if you want to test its functions, you will need to [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) the repository into your Java Workspace and run the project in your Java IDE. I used Eclipse as my IDE.
 
 ## Topics
 
