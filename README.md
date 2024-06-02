@@ -47,4 +47,4 @@ The`Member[]` array is now replaced with `ArrayList<Member>` which resizes dynam
 
 ### Functional Programming
 
-*-TO-DO-*
+*--TO-DO--*
